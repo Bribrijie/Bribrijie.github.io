@@ -108,3 +108,21 @@ git push
   凡是 front matter 里标了 `excludeFromSearch: true` 的页面（如搜索页自身）都会排除，
   标题锚点文本也会被清理，避免污染搜索结果。
 - 若某页不希望出现在搜索结果里，在 front matter 加 `excludeFromSearch: true`。
+
+## 待替换的占位内容
+
+站点当前是脚手架状态，以下都是占位内容，按需替换。中文和英文是**两份独立文件**，
+只改中文的话英文站会保持旧内容，记得两边都改。
+
+| 要改什么 | 文件 |
+| --- | --- |
+| 首页一句话简介 | `hugo.toml` → `[languages.zh-cn.params] info`（英文改 `[languages.en.params]`） |
+| 邮箱（两处） | `hugo.toml` → `[[params.social]]` 的 `mailto:`；以及 resume / about 页正文 |
+| 头像 | 替换 `static/images/avatar.svg`，文件名变了要同步改 `hugo.toml` 的 `avatarURL` |
+| 关于页 | `content/about/index.md` 和 `index.en.md` |
+| 项目页 | `content/projects/index.md` 和 `index.en.md` |
+| 简历页 | `content/resume/index.md` 和 `index.en.md`（含「某某大学」「某某公司」等） |
+| 示例文章 | `content/posts/first-post.md` 和 `index.en.md`，不需要可删除 |
+| GitHub 链接 | `hugo.toml` → `[[params.social]]`，以及各页正文里的链接 |
+
+改完提交推送即可自动部署：`git add . && git commit -m "更新内容" && git push`
