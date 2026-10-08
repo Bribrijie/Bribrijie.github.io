@@ -24,6 +24,10 @@
     }
   }
 
+  function countLabel(n) {
+    return n + (n === 1 ? " entry" : " entries");
+  }
+
   function escapeHtml(value) {
     return String(value)
       .replace(/&/g, "&amp;")
@@ -36,7 +40,7 @@
   function render(matches) {
     resultsEl.innerHTML = "";
     if (!matches.length) {
-      setStatus("没有找到匹配的结果。");
+      setStatus("No matching results.");
       return;
     }
     setStatus("");
@@ -76,10 +80,10 @@
           { name: "content", weight: 0.05 }
         ]
       });
-      setStatus("索引已加载，共 " + data.length + " 条内容。");
+      setStatus("Index loaded: " + countLabel(data.length) + ".");
     })
     .catch(function (err) {
-      setStatus("搜索索引加载失败：" + err.message);
+      setStatus("Failed to load the search index: " + err.message);
     });
 
   input.addEventListener("input", function () {
@@ -89,7 +93,7 @@
     }
     if (!query) {
       resultsEl.innerHTML = "";
-      setStatus("索引已加载，共 " + fuse.getIndex().docs.length + " 条内容。");
+      setStatus("Index loaded: " + countLabel(fuse.getIndex().docs.length) + ".");
       return;
     }
     render(fuse.search(query).slice(0, 20));

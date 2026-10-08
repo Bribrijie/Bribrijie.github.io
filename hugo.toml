@@ -2,8 +2,8 @@ baseURL = "https://bribrijie.github.io/"
 title = "Runzhe Han"
 theme = "hugo-coder"
 
-locale = "zh-cn"
-defaultContentLanguage = "zh-cn"
+locale = "en"
+defaultContentLanguage = "en"
 enableEmoji = true
 enableRobotsTXT = true
 
@@ -39,7 +39,7 @@ info = ["这里是占位简介，请替换成你自己的介绍"]
 description = "Runzhe Han 的个人网站"
 keywords = "blog,developer,personal,portfolio"
 avatarURL = "images/avatar.svg"
-dateFormat = "2006年1月2日"
+dateFormat = "January 2, 2006"
 since = 2026
 colorScheme = "auto"
 hideColorSchemeToggle = false
@@ -77,36 +77,36 @@ rel = "alternate"
 type = "application/rss+xml"
 
 [[menu.main]]
-name = "首页"
+name = "Home"
 weight = 1
 url = "/"
 
 [[menu.main]]
-name = "文章"
+name = "Posts"
 weight = 2
 url = "posts/"
 
 [[menu.main]]
-name = "归档"
+name = "Archives"
 weight = 3
 url = "archives/"
 
 [[menu.main]]
-name = "作品集"
+name = "Portfolio"
 weight = 4
 url = "portfolio/"
 
 [[menu.main]]
-name = "简历"
+name = "Resume"
 weight = 5
 url = "resume/"
 
 [[menu.main]]
-name = "关于"
+name = "About"
 weight = 6
 url = "about/"
 
 [[menu.main]]
-name = "搜索"
+name = "Search"
 weight = 7
 url = "search/"
