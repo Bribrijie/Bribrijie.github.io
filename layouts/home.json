@@ -1,6 +1,6 @@
 [
   {{- $linkText := i18n "link_to_heading" -}}
-  {{- $pages := where .Site.RegularPages "Section" "ne" "search" -}}
+  {{- $pages := where .Site.RegularPages "RelPermalink" "ne" "/search/" -}}
   {{- range $index, $page := $pages -}}
     {{- if $index }},{{ end }}
     {{- $plain := $page.Plain | replaceRE $linkText " " | replaceRE "\\s+" " " -}}
