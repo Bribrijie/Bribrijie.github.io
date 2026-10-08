@@ -1,0 +1,18 @@
+[
+  {{- $linkText := i18n "link_to_heading" -}}
+  {{- $pages := where .Site.RegularPages "Section" "ne" "search" -}}
+  {{- range $index, $page := $pages -}}
+    {{- if $index }},{{ end }}
+    {{- $plain := $page.Plain | replaceRE $linkText " " | replaceRE "\\s+" " " -}}
+    {{- $sum := $page.Summary | plainify | replaceRE $linkText " " | replaceRE "\\s+" " " -}}
+    {
+      "title": {{ $page.Title | jsonify }},
+      "permalink": {{ $page.RelPermalink | jsonify }},
+      "summary": {{ ($sum | truncate 160) | jsonify }},
+      "content": {{ ($plain | truncate 5000) | jsonify }},
+      "date": {{ ($page.Date.Format "2006-01-02") | jsonify }},
+      "tags": {{ $page.Params.tags | default (slice) | jsonify }},
+      "categories": {{ $page.Params.categories | default (slice) | jsonify }}
+    }
+  {{- end -}}
+]

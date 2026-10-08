@@ -1,0 +1,112 @@
+baseURL = "https://bribrijie.github.io/"
+title = "Runzhe Han"
+theme = "hugo-coder"
+
+locale = "zh-cn"
+defaultContentLanguage = "zh-cn"
+enableEmoji = true
+enableRobotsTXT = true
+
+# 首页额外输出 JSON，作为 Fuse.js 搜索索引
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[pagination]
+pagerSize = 6
+
+[markup]
+[markup.highlight]
+noClasses = false
+
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 4
+ordered = false
+
+[taxonomies]
+category = "categories"
+series = "series"
+tag = "tags"
+
+[params]
+author = "Runzhe Han"
+# TODO(占位): 改一句话简介
+info = ["这里是占位简介，请替换成你自己的介绍"]
+description = "Runzhe Han 的个人网站"
+keywords = "blog,developer,personal,portfolio"
+avatarURL = "images/avatar.svg"
+dateFormat = "2006年1月2日"
+since = 2026
+colorScheme = "auto"
+hideColorSchemeToggle = false
+maxSeeAlsoItems = 5
+
+# 自定义样式与脚本，路径相对于项目 assets/
+# 注意：顺序即加载顺序，Fuse.js 必须先于 search.js
+customSCSS = ["scss/custom.scss"]
+customJS = ["js/fuse.min.js", "js/search.js"]
+
+# 全站默认开启文章目录；单篇文章可用 front matter 里 toc = false 关闭
+[params.Entry]
+toc = true
+tocOpen = false
+
+[[params.social]]
+name = "GitHub"
+icon = "fa-brands fa-github fa-2x"
+weight = 1
+url = "https://github.com/Bribrijie/"
+
+# TODO(占位): 替换成你的真实邮箱
+[[params.social]]
+name = "Email"
+icon = "fa-solid fa-envelope fa-2x"
+weight = 2
+url = "mailto:your-email@example.com"
+
+[[params.social]]
+name = "RSS"
+icon = "fa-solid fa-rss fa-2x"
+weight = 3
+url = "/index.xml"
+rel = "alternate"
+type = "application/rss+xml"
+
+[[menu.main]]
+name = "首页"
+weight = 1
+url = "/"
+
+[[menu.main]]
+name = "文章"
+weight = 2
+url = "posts/"
+
+[[menu.main]]
+name = "归档"
+weight = 3
+url = "archives/"
+
+[[menu.main]]
+name = "作品集"
+weight = 4
+url = "portfolio/"
+
+[[menu.main]]
+name = "简历"
+weight = 5
+url = "resume/"
+
+[[menu.main]]
+name = "关于"
+weight = 6
+url = "about/"
+
+[[menu.main]]
+name = "搜索"
+weight = 7
+url = "search/"

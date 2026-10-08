@@ -1,0 +1,22 @@
+{{ define "title" }}归档 · {{ .Site.Title }}{{ end }}
+{{ define "content" }}
+  <section class="container list">
+    <header>
+      <h1 class="title">
+        <a class="title-link" href="{{ .Permalink | safeURL }}">归档</a>
+      </h1>
+    </header>
+    {{ .Content }}
+    {{ range (.Site.RegularPages.GroupByDate "2006") }}
+      <h2 class="archive-year">{{ .Key }}</h2>
+      <ul>
+        {{ range .Pages }}
+        <li>
+          <span class="date">{{ .Date | time.Format "01-02" }}</span>
+          <a class="title" href="{{ .Params.externalLink | default .RelPermalink }}">{{ .Title }}</a>
+        </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+  </section>
+{{ end }}
