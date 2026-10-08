@@ -1,5 +1,5 @@
 ---
-title: "归档"
+title: "Archives"
 date: 2026-10-08
 draft: false
 ---

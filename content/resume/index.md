@@ -1,5 +1,5 @@
 ---
-title: "Resume"
+title: "简历"
 date: 2026-10-08
 draft: false
 ---

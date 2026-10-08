@@ -1,13 +1,14 @@
-{{ define "title" }}Archives · {{ .Site.Title }}{{ end }}
+{{ define "title" }}{{ .Title }} · {{ .Site.Title }}{{ end }}
 {{ define "content" }}
   <section class="container list">
     <header>
       <h1 class="title">
-        <a class="title-link" href="{{ .Permalink | safeURL }}">Archives</a>
+        <a class="title-link" href="{{ .Permalink | safeURL }}">{{ .Title }}</a>
       </h1>
     </header>
     {{ .Content }}
-    {{ range (.Site.RegularPages.GroupByDate "2006") }}
+    {{ $pages := where .Site.RegularPages "Section" "ne" "search" }}
+    {{ range $pages.GroupByDate "2006" }}
       <h2 class="archive-year">{{ .Key }}</h2>
       <ul>
         {{ range .Pages }}

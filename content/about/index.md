@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "关于"
 date: 2026-10-08
 draft: false
 ---

@@ -12,7 +12,14 @@
   }
 
   var indexUrl = container.getAttribute("data-index-url");
+  var msgLoadedTpl = container.getAttribute("data-msg-loaded") || "__N__";
+  var msgEmpty = container.getAttribute("data-msg-empty") || "";
+  var msgFailed = container.getAttribute("data-msg-failed") || "";
   var fuse = null;
+
+  function loadedMessage(count) {
+    return msgLoadedTpl.replace("__N__", String(count));
+  }
 
   function setStatus(text) {
     if (!statusEl) return;
@@ -22,10 +29,6 @@
     } else {
       statusEl.hidden = true;
     }
-  }
-
-  function countLabel(n) {
-    return n + (n === 1 ? " entry" : " entries");
   }
 
   function escapeHtml(value) {
@@ -40,7 +43,7 @@
   function render(matches) {
     resultsEl.innerHTML = "";
     if (!matches.length) {
-      setStatus("No matching results.");
+      setStatus(msgEmpty);
       return;
     }
     setStatus("");
@@ -80,10 +83,10 @@
           { name: "content", weight: 0.05 }
         ]
       });
-      setStatus("Index loaded: " + countLabel(data.length) + ".");
+      setStatus(loadedMessage(data.length));
     })
     .catch(function (err) {
-      setStatus("Failed to load the search index: " + err.message);
+      setStatus(msgFailed + err.message);
     });
 
   input.addEventListener("input", function () {
@@ -93,7 +96,7 @@
     }
     if (!query) {
       resultsEl.innerHTML = "";
-      setStatus("Index loaded: " + countLabel(fuse.getIndex().docs.length) + ".");
+      setStatus(loadedMessage(fuse.getIndex().docs.length));
       return;
     }
     render(fuse.search(query).slice(0, 20));
