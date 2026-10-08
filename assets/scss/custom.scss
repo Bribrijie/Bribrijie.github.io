@@ -1,18 +1,73 @@
-// 站点级自定义样式补充
+// 站点级自定义样式
 
+// ---------------------------------------------------------------------------
+// 字体修正
+//
+// 主题的 $font-family 把日文字体 "游ゴシック" 排在中文之前。中文字符会被它
+// 部分接管，其余字符回退到微软雅黑 —— 两套字体的字面高度与基线不同，导致同一
+// 行内汉字高低不齐。这里用一个纯中文字体栈覆盖，让全部中文字符走同一套字体。
+//
+// 注意：主题设置 html { font-size: 62.5% }，即 1rem = 10px，所以下面的字号
+// 数值都要按这个比例读（1.8rem = 18px）。
+// ---------------------------------------------------------------------------
+$site-font-family: -apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+"PingFang SC",
+"Hiragino Sans GB",
+"Microsoft YaHei",
+"微软雅黑",
+"Source Han Sans SC",
+"Noto Sans CJK SC",
+"WenQuanYi Micro Hei",
+sans-serif;
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.navigation a,
+.navigation span,
+.pagination,
+.post .title,
+.list .title,
 .search-container {
-  margin: 1.5rem 0;
+  font-family: $site-font-family;
+}
+
+// 代码与等宽内容保持原有的等宽字体栈，不被上面的规则影响
+code,
+pre,
+kbd,
+samp {
+  font-family: "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+// ---------------------------------------------------------------------------
+// 搜索框
+// ---------------------------------------------------------------------------
+.search-container {
+  margin: 2rem 0;
 }
 
 .search-input {
   width: 100%;
-  padding: 0.7rem 0.9rem;
-  font-size: 1rem;
+  padding: 1.2rem 1.4rem;
+  font-family: $site-font-family;
+  font-size: 1.8rem; // 18px
+  line-height: 1.5;
   color: inherit;
   background: transparent;
   border: 1px solid currentColor;
   border-radius: 4px;
-  opacity: 0.85;
+  opacity: 0.9;
+}
+
+.search-input::placeholder {
+  font-size: 1.8rem;
 }
 
 .search-input:focus {
@@ -21,33 +76,37 @@
 }
 
 .search-status {
-  margin: 0.8rem 0;
+  margin: 1.2rem 0;
   opacity: 0.7;
-  font-size: 0.9rem;
+  font-size: 1.6rem; // 16px
 }
 
 .search-results {
   list-style: none;
   padding: 0;
-  margin: 1rem 0 0;
+  margin: 1.6rem 0 0;
 }
 
 .search-result {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.8rem;
 }
 
 .search-result__title {
-  font-size: 1.1rem;
+  font-size: 2rem; // 20px
   font-weight: 600;
+  line-height: 1.4;
 }
 
 .search-result__summary {
-  margin: 0.3rem 0 0;
+  margin: 0.6rem 0 0;
   opacity: 0.75;
-  font-size: 0.92rem;
-  line-height: 1.5;
+  font-size: 1.6rem; // 16px
+  line-height: 1.6;
 }
 
+// ---------------------------------------------------------------------------
+// 归档页
+// ---------------------------------------------------------------------------
 .archive-year {
-  margin-top: 1.6rem;
+  margin-top: 2.8rem;
 }
